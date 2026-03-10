@@ -3,21 +3,9 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 import { ROUTES } from '@shared/config/routes'
 
+import { parseStep, STEP_TITLES } from '../model/step'
+
 import type { PropsWithChildren } from 'react'
-
-const VALID_STEPS = [1, 2, 3] as const
-type Step = (typeof VALID_STEPS)[number]
-
-const STEP_TITLES: Record<Step, string> = {
-  1: 'Step 1: Personal details',
-  2: 'Step 2: Address and employment',
-  3: 'Step 3: Loan parameters',
-}
-
-function parseStep(param: string | undefined): Step | null {
-  const n = Number(param)
-  return VALID_STEPS.includes(n as Step) ? (n as Step) : null
-}
 
 const LoanLayout = ({ children, title }: PropsWithChildren<{ title: string }>) => {
   return (
@@ -51,7 +39,7 @@ export const LoanPage = () => {
 
   return (
     <LoanLayout title={STEP_TITLES[step]}>
-      <p>Step {step} content will go here.</p>
+      <p>Step {step}</p>
 
       <div className="d-flex justify-content-between mt-4">
         <button

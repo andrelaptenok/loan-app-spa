@@ -1,6 +1,7 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom'
 
 import { LoanPage } from '@pages/loan'
+import { NotFoundPage } from '@pages/not-found'
 import { ROUTES } from '@shared/config/routes'
 import { RouteErrorFallback } from '@shared/ui'
 
@@ -31,7 +32,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '*',
-        element: <Navigate to={ROUTES.loanStep(1)} replace />,
+        element: <NotFoundPage />,
       },
     ],
   },
