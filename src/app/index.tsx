@@ -1,7 +1,8 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+
+import { App } from '@app/ui/App.tsx'
 import '../index.css'
-import { App } from './ui/App'
 
 export const bootstrap = () => {
   const rootElement = document.getElementById('root')
