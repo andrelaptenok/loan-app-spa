@@ -2,6 +2,7 @@ import { createBrowserRouter, Navigate } from 'react-router-dom'
 
 import { LoanPage } from '@pages/loan'
 import { ROUTES } from '@shared/config/routes'
+import { RouteErrorFallback } from '@shared/ui'
 
 import { RootLayout } from './ui/RootLayout'
 
@@ -9,6 +10,7 @@ export const router = createBrowserRouter([
   {
     path: ROUTES.root,
     element: <RootLayout />,
+    errorElement: <RouteErrorFallback />,
     children: [
       {
         index: true,
