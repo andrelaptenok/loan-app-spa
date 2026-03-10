@@ -1,7 +1,9 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { RouterProvider } from 'react-router-dom'
 
-import { App } from '@app/ui/App.tsx'
+import { router } from '@app/router'
+
 import '../index.css'
 
 export const bootstrap = () => {
@@ -11,7 +13,7 @@ export const bootstrap = () => {
 
   createRoot(rootElement).render(
     <StrictMode>
-      <App />
+      <RouterProvider router={router} />
     </StrictMode>,
   )
 }
