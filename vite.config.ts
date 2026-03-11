@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
+  base: '/loan-app-spa/',
   plugins: [react()],
   resolve: {
     alias: {
