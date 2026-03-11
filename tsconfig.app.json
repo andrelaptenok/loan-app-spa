@@ -19,11 +19,16 @@
     /* Paths / aliases */
     "baseUrl": "./src",
     "paths": {
+      "@app": ["app/index.tsx"],
       "@app/*": ["app/*"],
+      "@pages": ["pages/index.ts"],
       "@pages/*": ["pages/*"],
       "@widgets/*": ["widgets/*"],
+      "@features": ["features/index.ts"],
       "@features/*": ["features/*"],
+      "@entities": ["entities/index.ts"],
       "@entities/*": ["entities/*"],
+      "@shared": ["shared/index.ts"],
       "@shared/*": ["shared/*"]
     },
 

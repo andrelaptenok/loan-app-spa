@@ -1,22 +1,12 @@
 import { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import { ROUTES } from '@shared/config/routes'
+import { Button, ROUTES } from '@shared'
 
-import { parseStep, STEP_TITLES } from '../model/step'
+import { PersonalDataForm } from '@features/personal-data-form'
+import { parseStep, STEP_TITLES } from '@pages/loan/model/step.ts'
 
-import type { PropsWithChildren } from 'react'
-
-const LoanLayout = ({ children, title }: PropsWithChildren<{ title: string }>) => {
-  return (
-    <div className="container py-4">
-      <h1 className="mb-4">{title}</h1>
-      <div className="card">
-        <div className="card-body">{children}</div>
-      </div>
-    </div>
-  )
-}
+import { LoanLayout } from './LoanLayout'
 
 export const LoanPage = () => {
   const { step: stepParam } = useParams<{ step: string }>()
@@ -29,38 +19,32 @@ export const LoanPage = () => {
     }
   }, [step, navigate])
 
-  if (step === null) {
-    return null
-  }
+  if (!step) return null
 
   const goToStep = (nextStep: number) => {
     navigate(ROUTES.loanStep(nextStep))
   }
 
-  return (
-    <LoanLayout title={STEP_TITLES[step]}>
-      <p>Step {step}</p>
+  const stepContent =
+    step === 1 ? (
+      <PersonalDataForm onSuccess={() => goToStep(2)} />
+    ) : (
+      <>
+        <p className="mb-4">Step {step} content will go here.</p>
+        <div className="d-flex justify-content-between">
+          <Button variant="outline-secondary" onClick={() => goToStep(step - 1)}>
+            Back
+          </Button>
+          {step < 3 ? (
+            <Button onClick={() => goToStep(step + 1)}>Next</Button>
+          ) : (
+            <Button variant="success" disabled>
+              Submit application
+            </Button>
+          )}
+        </div>
+      </>
+    )
 
-      <div className="d-flex justify-content-between mt-4">
-        <button
-          type="button"
-          className="btn btn-outline-secondary"
-          disabled={step === 1}
-          onClick={() => goToStep(step - 1)}
-        >
-          Back
-        </button>
-
-        {step < 3 ? (
-          <button type="button" className="btn btn-primary" onClick={() => goToStep(step + 1)}>
-            Next
-          </button>
-        ) : (
-          <button type="button" className="btn btn-success" disabled>
-            Submit application
-          </button>
-        )}
-      </div>
-    </LoanLayout>
-  )
+  return <LoanLayout title={STEP_TITLES[step]}>{stepContent}</LoanLayout>
 }
