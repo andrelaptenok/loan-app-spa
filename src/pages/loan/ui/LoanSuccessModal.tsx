@@ -18,7 +18,7 @@ export const LoanSuccessModal = (props: LoanSuccessModalProps) => {
       footer={<Button onClick={onClose}>Close</Button>}
     >
       <p className="mb-0">
-        Congratulations, {fullName}. You are approved for ${amount} for {term} days.
+        Congratulations, {fullName}. You have been approved for ${amount} for {term} days.
       </p>
     </Modal>
   )
