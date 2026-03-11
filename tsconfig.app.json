@@ -23,7 +23,6 @@
       "@app/*": ["app/*"],
       "@pages": ["pages/index.ts"],
       "@pages/*": ["pages/*"],
-      "@widgets/*": ["widgets/*"],
       "@features": ["features/index.ts"],
       "@features/*": ["features/*"],
       "@entities": ["entities/index.ts"],

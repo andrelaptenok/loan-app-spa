@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 
-import { Button, PhoneInputField, SelectField, TextField } from '@shared'
+import { Button, createFocusFirstError, PhoneInputField, SelectField, TextField } from '@shared'
 
 import { useLoanFormStore } from '@entities/loan'
 import {
@@ -11,10 +11,6 @@ import {
 
 interface PersonalDataFormProps {
   onSuccess: () => void
-}
-
-interface FieldError {
-  message?: string
 }
 
 export const PersonalDataForm = ({ onSuccess }: PersonalDataFormProps) => {
@@ -37,11 +33,10 @@ export const PersonalDataForm = ({ onSuccess }: PersonalDataFormProps) => {
     onSuccess()
   }
 
-  const focusFirstError = (errors: Partial<Record<keyof PersonalDataFormValues, FieldError>>) => {
-    const order: (keyof PersonalDataFormValues)[] = ['phone', 'firstName', 'lastName', 'gender']
-    const first = order.find((name) => errors[name])
-    if (first) requestAnimationFrame(() => setFocus(first))
-  }
+  const focusFirstError = createFocusFirstError(
+    ['phone', 'firstName', 'lastName', 'gender'],
+    setFocus,
+  )
 
   return (
     <form

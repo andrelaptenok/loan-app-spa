@@ -2,7 +2,7 @@ import classNames from 'classnames'
 
 import type { FieldPath, FieldValues, UseFormRegister } from 'react-hook-form'
 
-type TextFieldProps<T extends FieldValues> = {
+interface TextFieldProps<T extends FieldValues> {
   name: FieldPath<T>
   register: UseFormRegister<T>
   label: string

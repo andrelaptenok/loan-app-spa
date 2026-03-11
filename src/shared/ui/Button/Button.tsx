@@ -1,4 +1,5 @@
 import classNames from 'classnames'
+import * as React from 'react'
 import { Link } from 'react-router-dom'
 
 export type ButtonVariant =
@@ -8,20 +9,20 @@ export type ButtonVariant =
   | 'outline-secondary'
   | 'success'
 
-type ButtonBaseProps = {
+interface ButtonBaseProps {
   variant?: ButtonVariant
   className?: string
   disabled?: boolean
   children: React.ReactNode
 }
 
-type ButtonAsButton = ButtonBaseProps & {
+interface ButtonAsButton extends ButtonBaseProps {
   to?: never
   type?: 'button' | 'submit' | 'reset'
   onClick?: () => void
 }
 
-type ButtonAsLink = ButtonBaseProps & {
+interface ButtonAsLink extends ButtonBaseProps {
   to: string
   type?: never
   onClick?: never
@@ -37,14 +38,8 @@ const variantToClass: Record<ButtonVariant, string> = {
   success: 'btn-success',
 }
 
-export function Button({
-  variant = 'primary',
-  type = 'button',
-  className,
-  disabled,
-  children,
-  ...rest
-}: ButtonProps) {
+export function Button(props: ButtonProps) {
+  const { variant = 'primary', type = 'button', className, disabled, children, ...rest } = props
   const btnClass = classNames('btn', variantToClass[variant], className)
 
   if ('to' in rest && rest.to) {

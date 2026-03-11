@@ -6,65 +6,65 @@ import tseslint from 'typescript-eslint'
 import prettier from 'eslint-config-prettier'
 import eslintPluginPrettier from 'eslint-plugin-prettier/recommended'
 import importPlugin from 'eslint-plugin-import'
-import { defineConfig, globalIgnores } from 'eslint/config'
+import {defineConfig, globalIgnores} from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores(['dist', 'node_modules', '.vite']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    ignores: ['dist', 'node_modules', '.vite'],
-    plugins: {
-      import: importPlugin,
-    },
-    settings: {
-      'import/resolver': {
-        typescript: {
-          project: './tsconfig.app.json',
+    globalIgnores(['dist', 'node_modules', '.vite']),
+    {
+        files: ['**/*.{ts,tsx}'],
+        ignores: ['dist', 'node_modules', '.vite'],
+        plugins: {
+            import: importPlugin,
         },
-      },
-    },
-    extends: [
-      js.configs.recommended,
-      ...tseslint.configs.recommended,
-      reactHooks.configs.flat.recommended,
-      reactRefresh.configs.vite,
-      prettier,
-      eslintPluginPrettier,
-    ],
-    languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
-    },
-    rules: {
-      'prettier/prettier': 'error',
-      'import/order': [
-        'error',
-        {
-          groups: [
-            'builtin',
-            'external',
-            'internal',
-            'parent',
-            'sibling',
-            'index',
-            'object',
-            'type',
-          ],
-          pathGroups: [
-            {
-              pattern: '@{app,pages,widgets,features,entities,shared}/**',
-              group: 'internal',
-              position: 'after',
+        settings: {
+            'import/resolver': {
+                typescript: {
+                    project: './tsconfig.app.json',
+                },
             },
-          ],
-          pathGroupsExcludedImportTypes: ['builtin'],
-          alphabetize: {
-            order: 'asc',
-            caseInsensitive: true,
-          },
-          'newlines-between': 'always',
         },
-      ],
+        extends: [
+            js.configs.recommended,
+            ...tseslint.configs.recommended,
+            reactHooks.configs.flat.recommended,
+            reactRefresh.configs.vite,
+            prettier,
+            eslintPluginPrettier,
+        ],
+        languageOptions: {
+            ecmaVersion: 2020,
+            globals: globals.browser,
+        },
+        rules: {
+            'prettier/prettier': 'error',
+            'import/order': [
+                'error',
+                {
+                    groups: [
+                        'builtin',
+                        'external',
+                        'internal',
+                        'parent',
+                        'sibling',
+                        'index',
+                        'object',
+                        'type',
+                    ],
+                    pathGroups: [
+                        {
+                            pattern: '@{app,pages,features,entities,shared}/**',
+                            group: 'internal',
+                            position: 'after',
+                        },
+                    ],
+                    pathGroupsExcludedImportTypes: ['builtin'],
+                    alphabetize: {
+                        order: 'asc',
+                        caseInsensitive: true,
+                    },
+                    'newlines-between': 'always',
+                },
+            ],
+        },
     },
-  },
 ])

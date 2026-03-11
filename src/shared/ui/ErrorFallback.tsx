@@ -1,7 +1,8 @@
-import { Button } from './Button'
-import { ROUTES } from '../config'
+import { ROUTES } from '@shared/config'
 
-type ErrorFallbackProps = {
+import { Button } from './Button'
+
+interface ErrorFallbackProps {
   error: Error
   reset?: () => void
 }

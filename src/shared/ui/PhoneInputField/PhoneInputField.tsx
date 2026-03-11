@@ -8,7 +8,7 @@ import type { Control, FieldPath, FieldValues } from 'react-hook-form'
 
 const PHONE_MASK = '0 000 000 000'
 
-type PhoneInputFieldProps<T extends FieldValues> = {
+interface PhoneInputFieldProps<T extends FieldValues> {
   name: FieldPath<T>
   control: Control<T>
   label: string

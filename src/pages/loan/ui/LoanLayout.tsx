@@ -1,8 +1,8 @@
 import type { PropsWithChildren } from 'react'
 
-type LoanLayoutProps = PropsWithChildren<{
+interface LoanLayoutProps extends PropsWithChildren {
   title: string
-}>
+}
 
 export const LoanLayout = ({ children, title }: LoanLayoutProps) => {
   return (

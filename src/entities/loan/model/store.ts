@@ -11,8 +11,8 @@ const initialState: LoanFormState = {
     gender: '',
   },
   addressWorkData: {
-    workplace: '',
     address: '',
+    workplace: '',
   },
   loanParams: {
     amount: 200,
