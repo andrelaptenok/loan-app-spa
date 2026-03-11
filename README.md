@@ -1,5 +1,7 @@
 # Loan Application SPA
 
+The app is deployed on Vercel. Live: [**Loan Application**](https://loan-app-spa.vercel.app/loan/1)
+
 A single-page React + TypeScript application that implements a three-step loan application flow with validation and a final confirmation modal:
 
 1. Personal details  
