@@ -8,7 +8,8 @@ interface LoanSuccessModalProps {
   term: number
 }
 
-export const LoanSuccessModal = ({ open, onClose, fullName, amount, term }: LoanSuccessModalProps) => {
+export const LoanSuccessModal = (props: LoanSuccessModalProps) => {
+  const { open, onClose, fullName, amount, term } = props
   return (
     <Modal
       open={open}
@@ -22,4 +23,3 @@ export const LoanSuccessModal = ({ open, onClose, fullName, amount, term }: Loan
     </Modal>
   )
 }
-
