@@ -30,9 +30,10 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build
-        env:
-          VITE_BASE_URL: /loan-app-spa/
+        run: |
+          npm run build
+          # GitHub Pages SPA fallback: serve index.html for unknown routes
+          cp dist/index.html dist/404.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
