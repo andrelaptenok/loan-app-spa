@@ -1,10 +1,9 @@
 # Loan Application SPA
 
-A single-page React + TypeScript application that implements a three-step loan application flow with validation and a
-final confirmation modal:
+A single-page React + TypeScript application that implements a three-step loan application flow with validation and a final confirmation modal:
 
-1. Personal details
-2. Address and employment
+1. Personal details  
+2. Address and employment  
 3. Loan parameters + application submission
 
 After a successful API call, a confirmation modal is shown.
@@ -102,8 +101,8 @@ There is basic UX around loading and errors for workplace options:
 - **Back** – returns to step 2 while preserving data.
 - **Submit application** – sends data to the test API:
 
-    - `POST https://dummyjson.com/products/add`
-    - Body: `{ "title": "<firstName> <lastName>" }`
+  - `POST https://dummyjson.com/products/add`
+  - Body: `{ "title": "<firstName> <lastName>" }`
 
 On a successful response, a confirmation modal is displayed.
 
@@ -117,8 +116,7 @@ After a successful submission, a modal is displayed with text like:
 Congratulations, <LastName> <FirstName>. You are approved for $<amount> for <term> days.
 ```
 
-All values (`lastName`, `firstName`, `amount`, `term`) are taken from the centralized application state so that the user
-always sees the data they have entered.
+All values (`lastName`, `firstName`, `amount`, `term`) are taken from the centralized application state so that the user always sees the data they have entered.
 
 ---
 
@@ -127,8 +125,8 @@ always sees the data they have entered.
 - All form data is stored in a **Zustand** store (`entities/loan`), persisted to `localStorage`.
 - When navigating back and forth between steps, the data is preserved and prefilled in the forms.
 - Direct navigation to later steps is guarded:
-    - If step 1 is incomplete, the user is redirected to step 1.
-    - If step 2 is incomplete (for step 3), the user is redirected to step 2.
+  - If step 1 is incomplete, the user is redirected to step 1.
+  - If step 2 is incomplete (for step 3), the user is redirected to step 2.
 
 ---
 
@@ -142,12 +140,11 @@ always sees the data they have entered.
 ### react-hook-form + Zod
 
 - **react-hook-form**
-    - Efficient form state management with minimal re-renders.
-    - Good integration with both controlled and uncontrolled inputs, and with custom components like the masked phone
-      input.
+  - Efficient form state management with minimal re-renders.
+  - Good integration with both controlled and uncontrolled inputs, and with custom components like the masked phone input.
 - **Zod**
-    - Validation rules are described as schemas close to the domain data.
-    - `z.infer` keeps TypeScript types in sync with schemas without duplication.
+  - Validation rules are described as schemas close to the domain data.
+  - `z.infer` keeps TypeScript types in sync with schemas without duplication.
 
 These libraries were chosen to get strong, declarative validation and clean error handling with minimal boilerplate.
 
@@ -155,9 +152,9 @@ These libraries were chosen to get strong, declarative validation and clean erro
 
 - Centralizes data from all three steps in a small, focused store.
 - Compared to Redux or React Context, Zustand is lighter and has:
-    - A tiny API,
-    - Simple selectors,
-    - Built-in `persist` middleware for saving form state across refreshes.
+  - A tiny API,
+  - Simple selectors,
+  - Built-in `persist` middleware for saving form state across refreshes.
 - This fits a small SPA like this while still looking like a “real” multi-step form architecture.
 
 ### react-imask
@@ -169,22 +166,22 @@ These libraries were chosen to get strong, declarative validation and clean erro
 ### Bootstrap 5 + classnames
 
 - **Bootstrap 5**
-    - Provides basic layout (grid, spacing) and form styling out of the box.
-    - Allows focusing on application logic rather than custom styling for this test task.
+  - Provides basic layout (grid, spacing) and form styling out of the box.
+  - Allows focusing on application logic rather than custom styling for this test task.
 - **classnames**
-    - Simplifies building conditional `className` strings (e.g., error/disabled/open states).
-    - Keeps JSX readable instead of nesting multiple ternaries.
+  - Simplifies building conditional `className` strings (e.g., error/disabled/open states).
+  - Keeps JSX readable instead of nesting multiple ternaries.
 
 ---
 
 ## Time spent
 
-- Analyzing the task and planning: ~0.5 hours
-- Setting up project structure (routing, layers, state): ~1.5 hours
-- Implementing forms, validation and API calls: ~2.5 hours
-- UX polish (phone mask, errors, loading states, modal): ~1 hour
-- Refactoring, typing, README and code review passes: ~1 hour
-- GitHub Actions + GitHub Pages deployment setup: ~0.5 hours
+- Analyzing the task and planning: ~0.5 hours  
+- Setting up project structure (routing, layers, state): ~1.5 hours  
+- Implementing forms, validation and API calls: ~2.5 hours  
+- UX polish (phone mask, errors, loading states, modal): ~1 hour  
+- Refactoring, typing, README and code review passes: ~1 hour  
+- GitHub Actions + GitHub Pages deployment setup: ~0.5 hours  
 
 **Total:** ~7 hours
 
@@ -194,7 +191,7 @@ These libraries were chosen to get strong, declarative validation and clean erro
 
 - Improve the residential address input by integrating an address autocomplete using a maps API  
   (for example, Google Maps Places API or a similar geocoding/places service), in order to:
-    - reduce manual input and typos,
-    - suggest real addresses as the user types,
-    - optionally store structured address parts (city, street, house number) instead of a single free-text field.
+  - reduce manual input and typos,  
+  - suggest real addresses as the user types,  
+  - optionally store structured address parts (city, street, house number) instead of a single free-text field.
 

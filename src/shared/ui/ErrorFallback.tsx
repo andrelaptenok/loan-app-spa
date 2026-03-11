@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom'
+import { ROUTES } from '@shared/config'
 
-import { ROUTES } from '@shared/config/routes'
+import { Button } from './Button'
 
-type ErrorFallbackProps = {
+interface ErrorFallbackProps {
   error: Error
   reset?: () => void
 }
@@ -13,13 +13,11 @@ export const ErrorFallback = ({ error, reset }: ErrorFallbackProps) => {
       <h2 className="text-danger mb-3">Something went wrong</h2>
       <pre className="bg-light p-3 rounded text-start small mb-4">{error.message}</pre>
       <div className="d-flex gap-2 justify-content-center flex-wrap">
-        <Link to={ROUTES.root} className="btn btn-primary">
-          Go to home
-        </Link>
+        <Button to={ROUTES.root}>Go to home</Button>
         {reset && (
-          <button type="button" className="btn btn-outline-primary" onClick={reset}>
+          <Button variant="outline-primary" onClick={reset}>
             Try again
-          </button>
+          </Button>
         )}
       </div>
     </div>

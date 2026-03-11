@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
 
 import type { AddressWorkData, LoanFormState, LoanParams, PersonalData } from './types'
 
@@ -10,8 +11,8 @@ const initialState: LoanFormState = {
     gender: '',
   },
   addressWorkData: {
-    workplace: '',
     address: '',
+    workplace: '',
   },
   loanParams: {
     amount: 200,
@@ -26,19 +27,31 @@ export const useLoanFormStore = create<
     setLoanParams: (data: Partial<LoanParams>) => void
     reset: () => void
   }
->((set) => ({
-  ...initialState,
-  setPersonalData: (data) =>
-    set((state) => ({
-      personalData: { ...state.personalData, ...data },
-    })),
-  setAddressWorkData: (data) =>
-    set((state) => ({
-      addressWorkData: { ...state.addressWorkData, ...data },
-    })),
-  setLoanParams: (data) =>
-    set((state) => ({
-      loanParams: { ...state.loanParams, ...data },
-    })),
-  reset: () => set(initialState),
-}))
+>()(
+  persist(
+    (set) => ({
+      ...initialState,
+      setPersonalData: (data) =>
+        set((state) => ({
+          personalData: { ...state.personalData, ...data },
+        })),
+      setAddressWorkData: (data) =>
+        set((state) => ({
+          addressWorkData: { ...state.addressWorkData, ...data },
+        })),
+      setLoanParams: (data) =>
+        set((state) => ({
+          loanParams: { ...state.loanParams, ...data },
+        })),
+      reset: () => set(initialState),
+    }),
+    {
+      name: 'loan-form-storage',
+      partialize: (state) => ({
+        personalData: state.personalData,
+        addressWorkData: state.addressWorkData,
+        loanParams: state.loanParams,
+      }),
+    },
+  ),
+)

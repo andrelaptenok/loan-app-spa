@@ -2,12 +2,12 @@ import { Component, type ErrorInfo, type ReactNode } from 'react'
 
 import { ErrorFallback } from './ErrorFallback'
 
-type ErrorBoundaryProps = {
+interface ErrorBoundaryProps {
   children: ReactNode
   fallback?: ReactNode
 }
 
-type ErrorBoundaryState = {
+interface ErrorBoundaryState {
   error: Error | null
 }
 

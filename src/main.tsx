@@ -1,3 +1,3 @@
-import { bootstrap } from './app'
+import { startApp } from '@app'
 
-bootstrap()
+startApp()

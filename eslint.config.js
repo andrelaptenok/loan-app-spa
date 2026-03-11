@@ -52,7 +52,7 @@ export default defineConfig([
           ],
           pathGroups: [
             {
-              pattern: '@{app,pages,widgets,features,entities,shared}/**',
+              pattern: '@{app,pages,features,entities,shared}/**',
               group: 'internal',
               position: 'after',
             },
