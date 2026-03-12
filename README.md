@@ -4,8 +4,8 @@ The app is deployed on Vercel. Live: [**Loan Application**](https://loan-app-spa
 
 A single-page React + TypeScript application that implements a three-step loan application flow with validation and a final confirmation modal:
 
-1. Personal details  
-2. Address and employment  
+1. Personal details
+2. Address and employment
 3. Loan parameters + application submission
 
 After a successful API call, a confirmation modal is shown.
@@ -102,7 +102,6 @@ There is basic UX around loading and errors for workplace options:
 
 - **Back** – returns to step 2 while preserving data.
 - **Submit application** – sends data to the test API:
-
   - `POST https://dummyjson.com/products/add`
   - Body: `{ "title": "<firstName> <lastName>" }`
 
@@ -178,12 +177,12 @@ These libraries were chosen to get strong, declarative validation and clean erro
 
 ## Time spent
 
-- Analyzing the task and planning: ~0.5 hours  
-- Setting up project structure (routing, layers, state): ~1.5 hours  
-- Implementing forms, validation and API calls: ~2.5 hours  
-- UX polish (phone mask, errors, loading states, modal): ~1 hour  
-- Refactoring, typing, README and code review passes: ~1 hour  
-- GitHub Actions + GitHub Pages deployment setup: ~0.5 hours  
+- Analyzing the task and planning: ~0.5 hours
+- Setting up project structure (routing, layers, state): ~1.5 hours
+- Implementing forms, validation and API calls: ~2.5 hours
+- UX polish (phone mask, errors, loading states, modal): ~1 hour
+- Refactoring, typing, README and code review passes: ~1 hour
+- GitHub Actions + GitHub Pages deployment setup: ~0.5 hours
 
 **Total:** ~7 hours
 
@@ -193,7 +192,6 @@ These libraries were chosen to get strong, declarative validation and clean erro
 
 - Improve the residential address input by integrating an address autocomplete using a maps API  
   (for example, Google Maps Places API or a similar geocoding/places service), in order to:
-  - reduce manual input and typos,  
-  - suggest real addresses as the user types,  
+  - reduce manual input and typos,
+  - suggest real addresses as the user types,
   - optionally store structured address parts (city, street, house number) instead of a single free-text field.
-
