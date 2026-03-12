@@ -62,7 +62,7 @@ export function SelectField<T extends FieldValues>({
 
         return (
           <div className={classNames('mb-3', styles.wrapper)} ref={wrapperRef}>
-            <label htmlFor={fieldId} className="form-label">
+            <label id={`${fieldId}-label`} className="form-label">
               {label}
             </label>
             <div
@@ -75,6 +75,7 @@ export function SelectField<T extends FieldValues>({
               style={{ cursor: disabled ? 'not-allowed' : 'pointer', userSelect: 'none' }}
               id={fieldId}
               role="combobox"
+              aria-labelledby={`${fieldId}-label`}
               aria-expanded={disabled ? false : isOpen}
               aria-haspopup="listbox"
               aria-invalid={error ? true : undefined}
@@ -95,7 +96,7 @@ export function SelectField<T extends FieldValues>({
               <span style={{ opacity: displayValue ? 1 : 0.5 }}>{displayValue || placeholder}</span>
             </div>
             {isOpen && (
-              <ul className={styles.dropdown} role="listbox" aria-labelledby={fieldId}>
+              <ul className={styles.dropdown} role="listbox" aria-labelledby={`${fieldId}-label`}>
                 <li
                   role="option"
                   className={styles.option}
