@@ -1,7 +1,7 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom'
 
 import { LoanPage, NotFoundPage } from '@pages'
-import { ROUTES, RouteErrorFallback } from '@shared'
+import { RouteErrorFallback, ROUTES } from '@shared'
 
 import { RootLayout } from './ui/RootLayout'
 
